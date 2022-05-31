@@ -752,14 +752,9 @@ h6 {
   }
 
   .parallax__object-one {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
+    background-color: #FF005C;
     left: 50%;
-    margin-left: -253px;
+    margin-left: -252px;
   }
 
   .parallax__object-two {
@@ -775,6 +770,26 @@ h6 {
   .parallax__blot-two {
     right: 0px;
     bottom: 100px;
+  }
+}
+
+@media (max-width: 535px) {
+  .no-webp .parallax__object-one{
+    background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
+  .parallax__object-one {
+    width: 414px;
+    background-size: contain;
+    margin-left: -207px;
+  }
+}
+
+@media (max-width: 440px) {
+  .no-webp .parallax__object-one{
+    background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
+  .parallax__object-one {
+    width: 380px;
+    background-size: contain;
+    margin-left: -192px;
   }
 }
 
@@ -1160,27 +1175,6 @@ h6 {
   .parallax__title {
     margin-bottom: 15px;
   }
-
-  .no-webp .parallax__object-one{
-    background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
-
-  .parallax__object-one {
-    width: 404px;
-    height: 347px;
-    background-size: cover;
-    margin-left: -202px;
-  }
-}
-
-@media (max-width: 26.31125em) {
-  .no-webp .parallax__object-one{
-    background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
-  .parallax__object-one {
-    width: 404px;
-    height: 347px;
-    background-size: cover;
-    margin-left: -202px;
-  }
 }
 
 .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
@@ -1191,22 +1185,22 @@ h6 {
 
 .webp .parallax__blot-two{ background: url(../img/main/fix-tell/texture-2.webp) no-repeat; }
 
+@media (max-width: 535px){
+
+  .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
+}
+
+@media (max-width: 440px){
+
+  .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
+}
+
 @media (max-width: 375px){
 
   .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
 }
 
 @media (max-width: 326px){
-
-  .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
-}
-
-@media (max-width: 47.99875em){
-
-  .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
-}
-
-@media (max-width: 26.31125em){
 
   .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
 }
