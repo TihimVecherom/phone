@@ -34,9 +34,11 @@
         const parallax = document.querySelector(".parallax");
         if (parallax) {
             const content = document.querySelector(".parallax__objects");
+            const phone = document.querySelector(".parallax__object-two");
             const clouds = document.querySelector(".parallax__object-one");
             const mountains = document.querySelector(".parallax__blot-two");
             const human = document.querySelector(".parallax__blot-one");
+            const forPhone = 30;
             const forClouds = 40;
             const forMountains = 20;
             const forHuman = 10;
@@ -48,6 +50,7 @@
                 const distY = coordYprocent - positionY;
                 positionX += distX * speed;
                 positionY += distY * speed;
+                phone.style.cssText = `transform: translate(${positionX / forPhone}%,${positionY / forPhone}%);`;
                 clouds.style.cssText = `transform: translate(${positionX / forClouds}%,${positionY / forClouds}%);`;
                 mountains.style.cssText = `transform: translate(${positionX / forMountains}%,${positionY / forMountains}%);`;
                 human.style.cssText = `transform: translate(${positionX / forHuman}%,${positionY / forHuman}%);`;

@@ -439,7 +439,6 @@ h6 {
 }
 
 .parallax__objects {
-  background-color: blue;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -498,9 +497,6 @@ h6 {
   z-index: 1;
   width: 430px;
   height: 430px;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
 }
 
 .no-webp .parallax__blot-two{
@@ -513,9 +509,6 @@ h6 {
   z-index: 1;
   width: 430px;
   height: 389px;
-  -webkit-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
 }
 
 /*
@@ -741,9 +734,6 @@ h6 {
 
   .parallax__blot-one {
     right: 250px;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
   }
 }
 
@@ -780,17 +770,11 @@ h6 {
 
   .parallax__blot-one {
     left: 0;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
   }
 
   .parallax__blot-two {
     right: 0px;
     bottom: 100px;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
   }
 }
 
@@ -1188,7 +1172,7 @@ h6 {
   }
 }
 
-@media (max-width: 29.99875em) {
+@media (max-width: 26.31125em) {
   .no-webp .parallax__object-one{
     background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
   .parallax__object-one {
@@ -1222,7 +1206,7 @@ h6 {
   .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
 }
 
-@media (max-width: 29.99875em){
+@media (max-width: 26.31125em){
 
   .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
 }
