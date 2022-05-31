@@ -1167,7 +1167,7 @@ h6 {
   .parallax__object-one {
     width: 404px;
     height: 347px;
-    background-size: contain;
+    background-size: cover;
     margin-left: -202px;
   }
 }
@@ -1178,7 +1178,7 @@ h6 {
   .parallax__object-one {
     width: 404px;
     height: 347px;
-    background-size: contain;
+    background-size: cover;
     margin-left: -202px;
   }
 }
