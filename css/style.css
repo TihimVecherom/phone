@@ -139,6 +139,10 @@ h6 {
      object-fit: contain;
 }
 
+.header__burger {
+  height: 100%;
+}
+
 .burger__list a {
   position: relative;
   padding: 5px 10px;
@@ -146,20 +150,29 @@ h6 {
 
 .burger__list a:active {
   background-color: #FF005C;
-  -webkit-box-shadow: inset 0 0 5px rgb(177, 0, 139);
-          box-shadow: inset 0 0 5px rgb(177, 0, 139);
-  -webkit-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  color: #ffffff;
+}
+
+.burger {
+  height: 100%;
 }
 
 .burger__menu {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
+.burger__body {
+  height: 100%;
+}
+
 .burger__list {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -184,11 +197,12 @@ h6 {
 
 ._active-burger {
   position: absolute;
+  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background: #ffffff;
   padding: 24px 15px;
 }
 
@@ -247,6 +261,8 @@ h6 {
   transition: 0.3s;
 }
 
+/*//////////////////////////////////////////////////////////////////////*/
+
 .header {
   padding: 24px 0px 24px 0;
 }
@@ -297,22 +313,206 @@ h6 {
 }
 
 .tel:hover {
-  background: url("../img/header/icon/tel-green.svg") no-repeat;
-  -webkit-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-animation-name: tel-hover;
+          animation-name: tel-hover;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes tel-hover {
+  100% {
+    background: url("../img/header/icon/tel-green.svg") no-repeat;
+    -webkit-transition: 0.1s;
+    -o-transition: 0.1s;
+    transition: 0.1s;
+  }
+}
+
+@keyframes tel-hover {
+  100% {
+    background: url("../img/header/icon/tel-green.svg") no-repeat;
+    -webkit-transition: 0.1s;
+    -o-transition: 0.1s;
+    transition: 0.1s;
+  }
 }
 
 .tel-hidden {
   display: none;
 }
 
-.tel-hidden:hover {
+.tel-hidden:active {
   display: none;
 }
 
-.tel-hidden:active {
-  display: none;
+/*////////////////////////////////////////////////////////////////////////////*/
+
+.wrapper {
+  height: 100%;
+}
+
+.main__phones {
+  padding: 45px 0;
+}
+
+.button {
+  background: #FF005C;
+  -webkit-box-shadow: 0px 0px 30px rgba(0, 133, 255, 0.25);
+          box-shadow: 0px 0px 30px rgba(0, 133, 255, 0.25);
+  display: inline-block;
+  padding: 16px 48px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  color: #FFFFFF;
+}
+
+.phones {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.parallax {
+  width: 100%;
+  height: 475px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.parallax__text-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 466px;
+}
+
+.parallax__title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 59px;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+.parallax__paragraf {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+  color: #000000;
+}
+
+.parallax__button {
+  margin-top: 40px;
+}
+
+.parallax__objects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.no-webp .parallax__object-one{
+  background: url("../img/main/fix-tell/iphones.png"); }
+
+.parallax__object-one {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 504px;
+  height: 447px;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.no-webp .parallax__object-two{
+  background: url("../img/main/fix-tell/androids.png"); }
+
+.parallax__object-two {
+  position: absolute;
+  left: 0px;
+  bottom: 0;
+  z-index: 2;
+  width: 353px;
+  height: 475px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.no-webp .parallax__blot-one{
+  background: url("../img/main/fix-tell/texture-1.png") no-repeat; }
+
+.parallax__blot-one {
+  position: absolute;
+  right: 400px;
+  bottom: -150px;
+  z-index: 1;
+  width: 430px;
+  height: 430px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.no-webp .parallax__blot-two{
+  background: url("../img/main/fix-tell/texture-2.png") no-repeat; }
+
+.parallax__blot-two {
+  position: absolute;
+  right: -120px;
+  bottom: 150px;
+  z-index: 1;
+  width: 430px;
+  height: 389px;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
 }
 
 /*
@@ -478,7 +678,150 @@ h6 {
 }
 }
 
+@media (min-width: 61.99875em) and (min-width: 47.99875em) {
+  .burger__list a:hover::after::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ffffff;
+    -webkit-animation-name: a-hover;
+            animation-name: a-hover;
+    -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+
+@-webkit-keyframes a-hover {
+    20% {
+      background-color: #dd3a76;
+    }
+
+    100% {
+      width: 100%;
+      height: 100%;
+      color: #ffffff;
+      background-color: #FF005C;
+      -webkit-box-shadow: 0 0 1px rgb(177, 0, 139);
+              box-shadow: 0 0 1px rgb(177, 0, 139);
+    }
+}
+
+@keyframes a-hover {
+    20% {
+      background-color: #dd3a76;
+    }
+
+    100% {
+      width: 100%;
+      height: 100%;
+      color: #ffffff;
+      background-color: #FF005C;
+      -webkit-box-shadow: 0 0 1px rgb(177, 0, 139);
+              box-shadow: 0 0 1px rgb(177, 0, 139);
+    }
+}
+}
+
+@media (max-width: 1160px) {
+  .parallax__object-two {
+    left: 50%;
+    margin-left: -172px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  .parallax__blot-one {
+    right: 250px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  }
+}
+
+@media (max-width: 1001px) {
+  .parallax__text-block {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+  }
+
+  .parallax__objects {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 80%;
+            flex: 1 1 80%;
+  }
+
+  .parallax__object-one {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    left: 50%;
+    margin-left: -253px;
+  }
+
+  .parallax__object-two {
+    left: 0px;
+    margin-left: 0px;
+    display: none;
+  }
+
+  .parallax__blot-one {
+    left: 0;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  .parallax__blot-two {
+    right: 0px;
+    bottom: 100px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  }
+}
+
+@media (max-width: 375px) {
+  .no-webp .parallax__object-one{
+    background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
+  .parallax__object-one {
+    width: 334px;
+    height: 377px;
+    background-size: contain;
+    margin-left: -167px;
+  }
+}
+
+@media (max-width: 326px) {
+  .no-webp .parallax__object-one{
+    background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
+  .parallax__object-one {
+    width: 274px;
+    height: 327px;
+    background-size: contain;
+    margin-left: -137px;
+  }
+}
+
 @media (max-width: 61.99875em) {
+  .burger__list a:hover {
+    background-color: #FF005C;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    color: #ffffff;
+  }
+
   .burger {
     -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
@@ -499,9 +842,9 @@ h6 {
     width: 50px;
     height: 2px;
     background-color: black;
-    -webkit-transition: 0.8s;
-    -o-transition: 0.8s;
-    transition: 0.8s;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
     margin: 0 auto;
   }
 
@@ -518,17 +861,22 @@ h6 {
   .burger__object::after {
     content: "";
     top: 0;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
   }
 
   .burger__object::before {
     content: "";
     bottom: 0;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+  }
+
+  .burger__list {
+    z-index: 999;
+    background-color: #ffffff;
   }
 
   .burger__list {
@@ -697,12 +1045,39 @@ h6 {
     margin-left: auto;
     padding-right: 60px;
   }
+
+  .main__phones {
+    padding: 25px 0;
+  }
+
+  .parallax__title {
+    margin-bottom: 25px;
+  }
+
+  .parallax__button {
+    margin-top: 25px;
+  }
 }
 
 @media (max-width: 61.99875em) and (max-width: 47.99875em) {
   .burger__icon {
     top: 0px;
     margin-left: -50px;
+  }
+
+  .burger__list :last-child ::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    margin-left: -60px;
+    width: 120px;
+    height: 2px;
+    background-color: #FF005C;
+  }
+
+  .burger__list :not(:last-child) {
+    margin-bottom: 10px;
   }
 }
 
@@ -712,9 +1087,9 @@ h6 {
     width: 40px;
     height: 2px;
     background-color: black;
-    -webkit-transition: 0.8s;
-    -o-transition: 0.8s;
-    transition: 0.8s;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
     margin: 0 auto;
   }
 
@@ -731,17 +1106,21 @@ h6 {
   .burger__object::after {
     content: "";
     top: 0;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
   }
 
   .burger__object::before {
     content: "";
     bottom: 0;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+  }
+
+  .burger__link {
+    font-size: 30px;
   }
 
   .tel {
@@ -768,32 +1147,79 @@ h6 {
     background-size: cover;
     display: inline-block;
     margin-top: 15px;
-    width: 50px;
-    height: 50px;
-    -webkit-transition: 0.1s;
-    -o-transition: 0.1s;
-    transition: 0.1s;
-  }
-
-  .tel-hidden:hover {
-    background: url("../img/header/icon/tel-green.svg") no-repeat;
-    background-size: cover;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 24px;
+    height: 24px;
     -webkit-transition: 0.1s;
     -o-transition: 0.1s;
     transition: 0.1s;
   }
 
   .tel-hidden:active {
-    background: url("../img/header/icon/tel-green.svg") no-repeat;
+    background: url("../img/header/icon/tel.svg") no-repeat;
     background-size: cover;
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    margin-top: 15px;
+    width: 24px;
+    height: 24px;
     -webkit-transition: 0.1s;
     -o-transition: 0.1s;
     transition: 0.1s;
   }
+
+  .main__phones {
+    padding: 15px 0;
+  }
+
+  .parallax__title {
+    margin-bottom: 15px;
+  }
+
+  .no-webp .parallax__object-one{
+    background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
+
+  .parallax__object-one {
+    width: 454px;
+    height: 397px;
+    background-size: contain;
+    margin-left: -226px;
+  }
+}
+
+@media (max-width: 29.99875em) {
+  .no-webp .parallax__object-one{
+    background: url("../img/main/fix-tell/iphones.png") center center no-repeat; }
+  .parallax__object-one {
+    width: 404px;
+    height: 347px;
+    background-size: contain;
+    margin-left: -202px;
+  }
+}
+
+.webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp); }
+
+.webp .parallax__object-two{ background: url(../img/main/fix-tell/androids.webp); }
+
+.webp .parallax__blot-one{ background: url(../img/main/fix-tell/texture-1.webp) no-repeat; }
+
+.webp .parallax__blot-two{ background: url(../img/main/fix-tell/texture-2.webp) no-repeat; }
+
+@media (max-width: 375px){
+
+  .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
+}
+
+@media (max-width: 326px){
+
+  .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
+}
+
+@media (max-width: 47.99875em){
+
+  .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
+}
+
+@media (max-width: 29.99875em){
+
+  .webp .parallax__object-one{ background: url(../img/main/fix-tell/iphones.webp) center center no-repeat; }
 }
