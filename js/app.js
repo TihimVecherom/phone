@@ -3401,6 +3401,60 @@
             },
             on: {}
         });
+        if (document.querySelector(".reviews-swiper")) new core(".reviews-swiper", {
+            modules: [ Navigation, Pagination ],
+            observer: true,
+            observeParents: true,
+            slidesPerView: 1,
+            spaceBetween: 50,
+            autoHeight: true,
+            speed: 800,
+            effect: "fade",
+            autoplay: {
+                delay: 3e3,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            navigation: {
+                prevEl: ".swiper-button-prev",
+                nextEl: ".swiper-button-next"
+            },
+            breakpoints: {
+                280: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    autoHeight: true
+                },
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                550: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                992: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                1350: {
+                    slidesPerView: 1,
+                    spaceBetween: 50
+                },
+                1468: {
+                    slidesPerView: 1,
+                    spaceBetween: 50
+                }
+            },
+            on: {}
+        });
     }
     window.addEventListener("load", (function(e) {
         initSliders();
