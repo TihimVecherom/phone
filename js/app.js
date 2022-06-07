@@ -13,6 +13,68 @@
             document.documentElement.classList.add(className);
         }));
     }
+    function formRating() {
+        const ratings = document.querySelectorAll(".rating");
+        if (ratings.length > 0) initRatings();
+        function initRatings() {
+            let ratingActive, ratingValue;
+            for (let index = 0; index < ratings.length; index++) {
+                const rating = ratings[index];
+                initRating(rating);
+            }
+            function initRating(rating) {
+                initRatingVars(rating);
+                setRatingActiveWidth();
+                if (rating.classList.contains("rating_set")) setRating(rating);
+            }
+            function initRatingVars(rating) {
+                ratingActive = rating.querySelector(".rating__active");
+                ratingValue = rating.querySelector(".rating__value");
+            }
+            function setRatingActiveWidth(index = ratingValue.innerHTML) {
+                const ratingActiveWidth = index / .05;
+                ratingActive.style.width = `${ratingActiveWidth}%`;
+            }
+            function setRating(rating) {
+                const ratingItems = rating.querySelectorAll(".rating__item");
+                for (let index = 0; index < ratingItems.length; index++) {
+                    const ratingItem = ratingItems[index];
+                    ratingItem.addEventListener("mouseenter", (function(e) {
+                        initRatingVars(rating);
+                        setRatingActiveWidth(ratingItem.value);
+                    }));
+                    ratingItem.addEventListener("mouseleave", (function(e) {
+                        setRatingActiveWidth();
+                    }));
+                    ratingItem.addEventListener("click", (function(e) {
+                        initRatingVars(rating);
+                        if (rating.dataset.ajax) setRatingValue(ratingItem.value, rating); else {
+                            ratingValue.innerHTML = index + 1;
+                            setRatingActiveWidth();
+                        }
+                    }));
+                }
+            }
+            async function setRatingValue(value, rating) {
+                if (!rating.classList.contains("rating_sending")) {
+                    rating.classList.add("rating_sending");
+                    let response = await fetch("rating.json", {
+                        method: "GET"
+                    });
+                    if (response.ok) {
+                        const result = await response.json();
+                        const newRating = result.newRating;
+                        ratingValue.innerHTML = newRating;
+                        setRatingActiveWidth();
+                        rating.classList.remove("rating_sending");
+                    } else {
+                        alert("Ошибка");
+                        rating.classList.remove("rating_sending");
+                    }
+                }
+            }
+        }
+    }
     function ssr_window_esm_isObject(obj) {
         return null !== obj && "object" === typeof obj && "constructor" in obj && obj.constructor === Object;
     }
@@ -3401,60 +3463,6 @@
             },
             on: {}
         });
-        if (document.querySelector(".reviews-swiper")) new core(".reviews-swiper", {
-            modules: [ Navigation, Pagination ],
-            observer: true,
-            observeParents: true,
-            slidesPerView: 1,
-            spaceBetween: 50,
-            autoHeight: true,
-            speed: 800,
-            effect: "fade",
-            autoplay: {
-                delay: 3e3,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            },
-            navigation: {
-                prevEl: ".swiper-button-prev",
-                nextEl: ".swiper-button-next"
-            },
-            breakpoints: {
-                280: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                    autoHeight: true
-                },
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                550: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                768: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                992: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                1350: {
-                    slidesPerView: 1,
-                    spaceBetween: 50
-                },
-                1468: {
-                    slidesPerView: 1,
-                    spaceBetween: 50
-                }
-            },
-            on: {}
-        });
     }
     window.addEventListener("load", (function(e) {
         initSliders();
@@ -3530,4 +3538,5 @@
     };
     window["FLS"] = true;
     isWebp();
+    formRating();
 })();
