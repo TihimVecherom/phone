@@ -3414,55 +3414,114 @@
         });
     }
     function initSliders() {
-        if (document.querySelector(".swiper")) new core(".swiper", {
-            modules: [ Navigation, Pagination ],
-            observer: true,
-            observeParents: true,
-            slidesPerView: 3,
-            spaceBetween: 50,
-            autoHeight: true,
-            speed: 800,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            },
-            navigation: {
-                prevEl: ".swiper-button-prev",
-                nextEl: ".swiper-button-next"
-            },
-            breakpoints: {
-                280: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                    autoHeight: true
+        if (document.querySelector(".swiper")) {
+            new core(".swiper-choose", {
+                modules: [ Navigation, Pagination ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 3,
+                spaceBetween: 50,
+                autoHeight: true,
+                speed: 800,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true
                 },
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
+                navigation: {
+                    prevEl: ".swiper-button-prev",
+                    nextEl: ".swiper-button-next"
                 },
-                550: {
-                    slidesPerView: 2,
-                    spaceBetween: 30
+                breakpoints: {
+                    280: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                        autoHeight: true
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 30
+                    },
+                    550: {
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    },
+                    992: {
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    },
+                    1350: {
+                        slidesPerView: 3,
+                        spaceBetween: 50
+                    },
+                    1468: {
+                        slidesPerView: 3,
+                        spaceBetween: 50
+                    }
                 },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 30
+                on: {}
+            });
+            new core(".swiper-reviews", {
+                modules: [ Navigation, Pagination ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 2,
+                spaceBetween: 50,
+                autoHeight: true,
+                speed: 800,
+                effect: "fade",
+                autoplay: {
+                    delay: 3e3,
+                    disableOnInteraction: false
                 },
-                992: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true
                 },
-                1350: {
-                    slidesPerView: 3,
-                    spaceBetween: 50
+                navigation: {
+                    prevEl: ".swiper-button-prev",
+                    nextEl: ".swiper-button-next"
                 },
-                1468: {
-                    slidesPerView: 3,
-                    spaceBetween: 50
-                }
-            },
-            on: {}
-        });
+                breakpoints: {
+                    280: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                        autoHeight: true
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    }
+                },
+                on: {}
+            });
+            new core(".swiper-promotions", {
+                modules: [ Navigation, Pagination ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 1,
+                spaceBetween: 50,
+                autoHeight: true,
+                speed: 800,
+                effect: "fade",
+                autoplay: {
+                    delay: 3e3,
+                    disableOnInteraction: false
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true
+                },
+                navigation: {
+                    prevEl: ".swiper-button-prev",
+                    nextEl: ".swiper-button-next"
+                },
+                on: {}
+            });
+        }
     }
     window.addEventListener("load", (function(e) {
         initSliders();

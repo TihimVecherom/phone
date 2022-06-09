@@ -1266,6 +1266,109 @@ h6 {
   background-size: 24px 24px;
 }
 
+.promotions {
+  margin-bottom: 150px;
+}
+
+.promotions__title {
+  margin-bottom: 45px;
+}
+
+.swiper-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+
+.swiper-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+
+.slide-promotions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 133, 255, 0.15);
+          box-shadow: 0px 0px 20px rgba(0, 133, 255, 0.15);
+  padding: 45px;
+  overflow: hidden;
+}
+
+.slide-promotions__picture {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+  background: url("../img/main/promotions/phone.png") 0px 50px no-repeat;
+  width: 500px;
+  height: 300px;
+}
+
+.text-cards__block {
+  margin-bottom: 50px;
+}
+
+.title-promotions {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 135%;
+  /* identical to box height, or 49px */
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.paragraf-promotions {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 165%;
+  /* or 40px */
+  color: #000000;
+  max-width: 325px;
+}
+
+.promotions-paragraf-size {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 135%;
+}
+
+.button-opacity {
+  color: #202020;
+  background: rgba(255, 255, 255, 0.5058823529) url("../img/main/promotions/arrow.svg") center right no-repeat;
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 132, 255, 0);
+          box-shadow: 0px 0px 20px rgba(0, 132, 255, 0);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.button-opacity:hover {
+  background: #ff005d url("../img/main/promotions/arrow.svg") 120% center no-repeat;
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 133, 255, 0.15);
+          box-shadow: 0px 0px 20px rgba(0, 133, 255, 0.15);
+  color: #ffffff;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
 /*
 .icon-menu {
 	display: none;
@@ -2383,6 +2486,12 @@ button.swiper-pagination-bullet {
   }
 }
 
+@media (max-width: 1200px) {
+  .slide-promotions__picture {
+    background: url("../img/main/promotions/phone.png") 0px 100px no-repeat;
+  }
+}
+
 @media (max-width: 1160px) {
   .parallax__object-two {
     left: 50%;
@@ -2563,6 +2672,25 @@ button.swiper-pagination-bullet {
   .breakdowns__card-seven-ibg {
     right: -50px;
   }
+
+  .slide-promotions {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 767.98) {
+  .button-icon {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    min-width: 33%;
+  }
+}
+
+@media (max-width: 650px) {
+  .slide-promotions__picture {
+    background: url("../img/main/promotions/phone.png") 0px 50px no-repeat;
+  }
 }
 
 @media (max-width: 580px) {
@@ -2685,6 +2813,11 @@ button.swiper-pagination-bullet {
             flex: 1 0 17%;
     padding: 15px;
     min-width: 150px;
+    min-height: 60px;
+  }
+
+  .brand-ibg .img {
+    padding: 15px;
   }
 }
 
@@ -2697,6 +2830,12 @@ button.swiper-pagination-bullet {
   }
 }
 
+@media (max-width: 420px) {
+  .promotions-paragraf-size {
+    font-size: 65px;
+  }
+}
+
 @media (max-width: 410px) {
   .breakdowns__card-one-ibg {
     top: 200px;
@@ -2706,6 +2845,12 @@ button.swiper-pagination-bullet {
     right: -80px;
     width: 180px;
     height: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .slide-promotions__picture {
+    background: url("../img/main/promotions/phone.png") 0px 20px no-repeat;
   }
 }
 
@@ -2743,6 +2888,10 @@ button.swiper-pagination-bullet {
     background: url("../img/main/fix-tell/iphones.png") center center no-repeat;
     background-size: contain;
     margin-left: -167px;
+  }
+
+  .promotions-paragraf-size {
+    font-size: 55px;
   }
 }
 
@@ -3073,6 +3222,10 @@ button.swiper-pagination-bullet {
         -ms-flex-pack: center;
             justify-content: center;
   }
+
+  .promotions {
+    margin-bottom: 100px;
+  }
 }
 
 @media (max-width: 61.99875em) and (max-width: 47.99875em) {
@@ -3219,10 +3372,13 @@ button.swiper-pagination-bullet {
             justify-content: center;
   }
 
-  .button-icon {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-    min-width: 33%;
+  .promotions {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 26.31125em) {
+  .title-promotions {
+    font-size: 30px;
   }
 }
