@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20220614142845">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220614165045">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 
 <body>
 	<div class="wrapper">
-		<header class="header">
+		<header id="main" class="header">
 			<div class="header__container">
 
 				<div class="header__logo">
@@ -26,12 +26,12 @@
 						<button type="button" class="burger__icon "><span class="burger__object"></span></button>
 						<nav class="burger__body">
 							<ul class="burger__list">
-								<li class="burger__item"><a href="#" class="burger__link">Главная</a></li>
-								<li class="burger__item"><a href="#" class="burger__link">Бренды</a></li>
-								<li class="burger__item"><a href="#" class="burger__link">Поломки</a></li>
-								<li class="burger__item"><a href="#" class="burger__link">Новости</a></li>
-								<li class="burger__item"><a href="#" class="burger__link">Контакты</a></li>
-								<li class="burger__item"><a class="burger__link tel tel-hidden" href="tel:+380992511793"></a>
+								<li class="burger__item"><a href="#main" class="burger__link">Главная</a></li>
+								<li class="burger__item"><a href="#brand" class="burger__link">Бренды</a></li>
+								<li class="burger__item"><a href="#breakdowns" class="burger__link">Поломки</a></li>
+								<li class="burger__item"><a href="#promotions" class="burger__link">Новости</a></li>
+								<li class="burger__item"><a href="#contacts" class="burger__link">Контакты</a></li>
+								<li class="burger__item"><a class="burger__link tel tel-hidden" href="tel:+380992511999"></a>
 								</li>
 							</ul>
 						</nav>
@@ -39,9 +39,10 @@
 				</div>
 
 				<div class="header__tel">
-					<a class="tel " href="tel:+380992511793">+380992511793</a>
+					<a class="tel " href="tel:+380992511793">+380992511999</a>
 				</div>
 			</div>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js?_v=20220614165045"></script>
 		</header>
 		<main class="page">
 
@@ -135,7 +136,7 @@
 
 						</div>
 					</div>
-					<div class="breakdowns">
+					<div id="breakdowns" class="breakdowns">
 						<div class="breakdowns__title">
 							<h2 class="title">Ремонтируем поломки</h2>
 						</div>
@@ -409,7 +410,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="brands">
+					<div id="brand" class="brands">
 						<div class="brands__title">
 							<h2 class="title">Ремонтируем бренды</h2>
 						</div>
@@ -643,7 +644,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="promotions">
+					<div id="promotions" class="promotions">
 						<div class="promotions__title">
 							<h2 class="title">Актуальные акции</h2>
 						</div>
@@ -866,7 +867,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="contacts">
+					<div id="contacts" class="contacts">
 						<div class="contacts__title">
 							<h2 class="title">Наши контакты</h2>
 						</div>
@@ -878,8 +879,8 @@
 							</div>
 							<div class="card-contact">
 								<h3 class="card-contact__title">Адрес:</h3>
-								<span class="card-contact__item">Ленинский пр, 136</span>
-								<h3 class="card-contact__title">м. Ленинский проспект</h3>
+								<span class="card-contact__item">Левобережная, 136</span>
+								<h3 class="card-contact__title">м.Левобережный проспект</h3>
 							</div>
 							<div class="card-contact">
 								<h3 class="card-contact__title">Часы работы:</h3>
@@ -893,11 +894,12 @@
 						<div class="contacts__text">
 							<div data-spollers class="spollers">
 								<div class="spollers__item">
-									<div class="spollers__content">Сервисный центр в СПб осуществляет ремонт телефонов любого
+									<div class="spollers__content">Сервисный центр в Киеве осуществляет ремонт телефонов любого
 										бренда и модификации. Выполняем восстановление мобильных гаджетов с различными
 										повреждениями и программными сбоями срочно по оптимальным ценам. Мастера центра обладают
 										высокой квалификацией для того, чтобы починить неработающую технику. При этом не важно, в
 										каком она состоянии и насколько сложным окажется процесс восстановления.</div>
+
 									<button type="button" data-spoller class="spollers__title">Читать полностью</button>
 									<div class="spollers__body">
 										<p class="paragraf-spoller">
@@ -928,7 +930,9 @@
 											culpa reiciendis ullam quam eveniet vero tenetur maxime officiis magni alias ea! Dolore
 											impedit pariatur consequatur dolorem voluptas porro.
 										</p>
+
 									</div>
+
 								</div>
 							</div>
 						</div>
@@ -958,16 +962,14 @@
 					</div>
 
 					<p class="text__paragraf">Наш сервисный центр, находится прямо возле странции метро
-						Ленинский проспект. Чтобы к нам попать, Вам необходимо начать
-						движение в сторону метро Московская. Мы располагаемся между
-						зданий «Нарвского универмага». Так же возле нашего сервисного
+						Левобережная. Чтобы к нам попать, Вам необходимо начать
+						движение в сторону метро Левобережная. Мы располагаемся между
+						зданий универмага. Так же возле нашего сервисного
 						центра Вы всегда найдете парковочное место. </p>
-
-
 					<div class="text__block block-direction-column">
 
 						<span class="span grey">г.Киев</span>
-						<span class="span-text pink">Ленинский пр, 136</span>
+						<span class="span-text pink">Левобережная, 136</span>
 					</div>
 				</div>
 			</div>
@@ -978,11 +980,11 @@
 						<nav class="menu__body">
 
 							<ul class="menu__list">
-								<li class="menu__item"><a href="#" class="menu__link">Главная</a></li>
-								<li class="menu__item"><a href="#" class="menu__link">О компании</a></li>
-								<li class="menu__item"><a href="#" class="menu__link">Новости</a></li>
-								<li class="menu__item"><a href="#" class="menu__link">Акции</a></li>
-								<li class="menu__item"><a href="#" class="menu__link">Контакты</a></li>
+								<li class="menu__item"><a href="#main" class="menu__link">Главная</a></li>
+								<li class="menu__item"><a href="#contacts" class="menu__link">О компании</a></li>
+								<li class="menu__item"><a href="#promotions" class="menu__link">Новости</a></li>
+								<li class="menu__item"><a href="#promotions" class="menu__link">Акции</a></li>
+								<li class="menu__item"><a href="#contacts" class="menu__link">Контакты</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -1026,7 +1028,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20220614142845"></script>
+	<script src="js/app.min.js?_v=20220614165045"></script>
 </body>
 
 </html>
