@@ -1817,6 +1817,24 @@ input[type=text] {
   overflow: hidden;
 }
 
+.button-icon {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.button-icon:hover {
+  -webkit-box-shadow: 0px 0px 20px rgba(255, 0, 128, 0.205);
+          box-shadow: 0px 0px 20px rgba(255, 0, 128, 0.205);
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.title {
+  padding: 20px;
+}
+
 /*
 .icon-menu {
 	display: none;
@@ -1936,7 +1954,7 @@ input[type=text] {
           align-items: center;
 }
 
-.text__paragraf {
+.footer__block-text .text__paragraf {
   margin-top: 20px;
   margin-bottom: 20px;
 }

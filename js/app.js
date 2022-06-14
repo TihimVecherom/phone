@@ -3990,10 +3990,16 @@
     const menuBurger = document.querySelector(".burger__icon");
     const menuBody = document.querySelector(".burger__body");
     const burger = document.querySelector(".burger");
+    const aLink = document.querySelector(".burger__list");
     if (menuBurger) menuBurger.addEventListener("click", (function(e) {
         menuBurger.classList.toggle("_active-burger-icon");
         if (menuBody) menuBody.classList.toggle("_active-burger-body");
         if (burger) burger.classList.toggle("_active-burger");
+    }));
+    if (aLink) aLink.addEventListener("click", (function(e) {
+        menuBurger.classList.remove("_active-burger-icon");
+        if (menuBody) menuBody.classList.remove("_active-burger-body");
+        if (burger) burger.classList.remove("_active-burger");
     }));
     window.onload = function() {
         const parallax = document.querySelector(".parallax");
@@ -4015,10 +4021,10 @@
                 const distY = coordYprocent - positionY;
                 positionX += distX * speed;
                 positionY += distY * speed;
-                phone.style.cssText = `transform: translate(${positionX / forPhone}%,${positionY / forPhone}%);`;
-                clouds.style.cssText = `transform: translate(${positionX / forClouds}%,${positionY / forClouds}%);`;
-                mountains.style.cssText = `transform: translate(${positionX / forMountains}%,${positionY / forMountains}%);`;
-                human.style.cssText = `transform: translate(${positionX / forHuman}%,${positionY / forHuman}%);`;
+                phone.style.cssText = `transform: translate(${positionX / forPhone}%, ${positionY / forPhone}%); `;
+                clouds.style.cssText = `transform: translate(${positionX / forClouds}%, ${positionY / forClouds}%); `;
+                mountains.style.cssText = `transform: translate(${positionX / forMountains}%, ${positionY / forMountains}%); `;
+                human.style.cssText = `transform: translate(${positionX / forHuman}%, ${positionY / forHuman}%); `;
                 requestAnimationFrame(setMouseParallaxStyle);
             }
             setMouseParallaxStyle();
@@ -4041,9 +4047,9 @@
             });
             observer.observe(document.querySelector(".content"));
             function setParallaxItemsStyle(scrollTopProcent) {
-                content.style.cssText = `transform: translate(0%,-${scrollTopProcent / 9}%);`;
-                mountains.parentElement.style.cssText = `transform: translate(0%,-${scrollTopProcent / 6}%);`;
-                human.parentElement.style.cssText = `transform: translate(0%,-${scrollTopProcent / 3}%);`;
+                content.style.cssText = `transform: translate(0 %, -${scrollTopProcent / 9}%); `;
+                mountains.parentElement.style.cssText = `transform: translate(0 %, -${scrollTopProcent / 6}%); `;
+                human.parentElement.style.cssText = `transform: translate(0 %, -${scrollTopProcent / 3}%); `;
             }
         }
     };
