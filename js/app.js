@@ -4066,6 +4066,23 @@
             }
         }));
     }));
+    const header = document.querySelector(".header");
+    const block = document.querySelector(".main");
+    document.querySelector(".title");
+    const headerHeight = header.offsetHeight;
+    const moment = headerHeight;
+    window.addEventListener("scroll", setHeaderStyle);
+    function setHeaderStyle(e) {
+        console.log(`Объект ниже верхней части экрана на ${main.getBoundingClientRect().top}`);
+        console.log(`Момент ${moment}`);
+        if (block.getBoundingClientRect().top <= moment) {
+            header.style.top = `${block.offsetTop - moment}px`;
+            header.classList.add("_active-header");
+        } else {
+            header.style.top = ``;
+            header.classList.remove("_active-header");
+        }
+    }
     window["FLS"] = true;
     isWebp();
     spollers();
