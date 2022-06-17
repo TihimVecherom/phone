@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 
 <head>
@@ -6,14 +7,15 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20220609191259">
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220617205352">
+	<link rel="shortcut icon" href="img/main/icon/icon.png">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+
 <body>
-	<div class="wrapper">
+	<div id="main" class="wrapper">
 		<header class="header">
 			<div class="header__container">
 
@@ -26,12 +28,13 @@
 						<button type="button" class="burger__icon "><span class="burger__object"></span></button>
 						<nav class="burger__body">
 							<ul class="burger__list">
-								<li class="burger__item"><a href="#" class="burger__link">Главная</a></li>
-								<li class="burger__item"><a href="#" class="burger__link">Бренды</a></li>
-								<li class="burger__item"><a href="#" class="burger__link">Поломки</a></li>
-								<li class="burger__item"><a href="#" class="burger__link">Новости</a></li>
-								<li class="burger__item"><a href="#" class="burger__link">Контакты</a></li>
-								<li class="burger__item"><a class="burger__link tel tel-hidden" href="tel:+380992511793"></a>
+								<li class="burger__item"><a href="#main" class="burger__link">Главная</a></li>
+								<li class="burger__item"><a href="#brand" class="burger__link">Бренды</a></li>
+								<li class="burger__item"><a href="#breakdowns" class="burger__link">Поломки</a></li>
+								<li class="burger__item"><a href="#promotions" class="burger__link">Новости</a></li>
+								<li class="burger__item"><a href="#contacts" class="burger__link">Контакты</a></li>
+
+								<li class="burger__item"><a class="burger__link tel tel-hidden" href="tel:+380992511999"></a>
 								</li>
 							</ul>
 						</nav>
@@ -39,15 +42,16 @@
 				</div>
 
 				<div class="header__tel">
-					<a class="tel " href="tel:+380992511793">+380992511793</a>
+					<a class="tel " href="tel:+380992511793">+380992511999</a>
 				</div>
 			</div>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js?_v=20220617205352"></script>
 		</header>
 		<main class="page">
 
-			<div class="main">
+			<div class="main ">
 				<div class="main__container">
-					<div class="main__phones phones">
+					<div class="main__phones phones ">
 						<div class="phones__parallax parallax">
 							<div class="parallax__text-block ">
 
@@ -73,9 +77,9 @@
 
 						</div>
 					</div>
-					<div class="choose">
+					<div class="choose ">
 						<div class="choose__title">
-							<h2 class="title">Нас выбирают</h2>
+							<h2 class="title ">Нас выбирают</h2>
 						</div>
 						<div class="swiper swiper-choose">
 							<!-- Additional required wrapper -->
@@ -135,9 +139,9 @@
 
 						</div>
 					</div>
-					<div class="breakdowns">
+					<div id="breakdowns" class="breakdowns ">
 						<div class="breakdowns__title">
-							<h2 class="title">Ремонтируем поломки</h2>
+							<h2 class="title ">Ремонтируем поломки</h2>
 						</div>
 						<div class="breakdowns__cards">
 							<div class="breakdowns__card ">
@@ -409,7 +413,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="brands">
+					<div id="brand" class="brands">
 						<div class="brands__title">
 							<h2 class="title">Ремонтируем бренды</h2>
 						</div>
@@ -643,7 +647,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="promotions">
+					<div id="promotions" class="promotions">
 						<div class="promotions__title">
 							<h2 class="title">Актуальные акции</h2>
 						</div>
@@ -741,20 +745,279 @@
 
 						</div>
 					</div>
+					<div class="block-form">
+						<div class="block-form__title">
+							<h2 class="title">Вызвать мастера</h2>
+						</div>
+						<div class="block-form__content master-img">
+							<div class="block-form__text text">
+								<h2 class="text__title">Вызвать мастера на дом</h2>
+								<p class="text__paragraf">Чтобы вызвать мастера на дом, пожалуйста, заполните
+									форму обратной связи. Так же можете самостоятельно
+									связаться с нами, позвонив по номеру телефона:</p>
+								<span class="text__number pink">+380992511999</span>
+								<a class="text__link pink" href="#">Позвонить нам</a>
+							</div>
+							<div class="block-form__input-block text">
+								<h2 class="text__title">Заполните форму:</h2>
+								<input autocomplete="off" type="text" data-error="Ошибка" placeholder="Ваш телефон" class="input">
+
+								<a href="#" class="button">Вызвать мастера на дом</a>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="work">
+						<div class="work__title">
+							<h2 class="title">Как мы работаем</h2>
+						</div>
+						<div class="work__cards">
+							<div class="work__card card">
+								<div class="card__text text">
+									<h2 class="text__title"><span class="pink number">1</span>Звонок</h2>
+									<p class="text__paragraf">Звоните по телефону и оставляете заявку
+										на ремонт техники</p>
+								</div>
+							</div>
+							<div class="work__card card">
+								<div class="card__text text">
+									<h2 class="text__title"><span class="pink number">2</span>Доставка</h2>
+									<p class="text__paragraf">Привозите технику самостоятельно или
+										передаете курьером</p>
+								</div>
+							</div>
+							<div class="work__card card">
+								<div class="card__text text">
+									<h2 class="text__title"><span class="pink number">3</span>Диагностика</h2>
+									<p class="text__paragraf">Проводится точная и полная диагностика
+										Вашей электроники</p>
+								</div>
+							</div>
+							<div class="work__card card">
+								<div class="card__text text">
+									<h2 class="text__title"><span class="pink number">4</span>Согласовывание</h2>
+									<p class="text__paragraf">Согласовываем с Вами цену и
+										приступаем к работе</p>
+								</div>
+							</div>
+							<div class="work__card card">
+								<div class="card__text text">
+									<h2 class="text__title"><span class="pink number">5</span>Все уже готово</h2>
+									<p class="text__paragraf">Передаем исправное устройство в
+										удобное для вас время</p>
+								</div>
+							</div>
+						</div>
+					</div>
 
 
+					<div class="swiper swiper-gallery">
+						<div class="swiper-gallery__title">
+							<h2 class="title">Наш сервисный центр</h2>
+						</div>
+						<div class="swiper-wrapper wrapper-swiper-gallery">
+
+							<div class="swiper-slide slide-gallery gallery-slide-ibg">
+								<img src="img/main/gallery/1.jpg" alt="picture">
+							</div>
+
+							<div class="swiper-slide slide-gallery gallery-slide-ibg">
+								<img src="img/main/gallery/2.jpg" alt="picture">
+							</div>
+
+							<div class="swiper-slide slide-gallery gallery-slide-ibg">
+								<img src="img/main/gallery/3.jpg" alt="picture">
+							</div>
+
+							<div class="swiper-slide slide-gallery gallery-slide-ibg">
+								<img src="img/main/gallery/1.jpg" alt="picture">
+							</div>
+
+							<div class="swiper-slide slide-gallery gallery-slide-ibg ">
+								<img src="img/main/gallery/2.jpg" alt="picture">
+							</div>
+
+							<div class="swiper-slide slide-gallery gallery-slide-ibg">
+								<img src="img/main/gallery/3.jpg" alt="picture">
+							</div>
+						</div>
+						<!-- If we need pagination -->
+						<!-- If we need navigation buttons -->
+						<!-- If we need scrollbar -->
+						<div class="swiper-scrollbar "></div>
+					</div>
+
+					<div class="block-form">
+						<div class="block-form__title">
+							<h2 class="title">Вызвать курьера</h2>
+						</div>
+						<div class="block-form__content car-img">
+							<div class="block-form__text text">
+								<h2 class="text__title">Вызвать курьера на дом</h2>
+								<p class="text__paragraf">Для вызова курьера на дом заполните быструю
+									форму обратной связи. Так же можете самостоятельно
+									связаться с нами, позвонив по номеру телефона:</p>
+								<span class="text__number pink">+380992511793</span>
+								<a class="text__link pink" href="#">Вызвать курьера</a>
+							</div>
+							<div class="block-form__input-block text">
+								<h2 class="text__title">Заполните форму:</h2>
+								<input autocomplete="off" type="text" data-error="Ошибка" placeholder="Ваш телефон" class="input">
+
+								<a href="#" class="button">Вызвать курьера на дом</a>
+
+							</div>
+						</div>
+					</div>
+					<div id="contacts" class="contacts">
+						<div class="contacts__title">
+							<h2 class="title">Наши контакты</h2>
+						</div>
+						<div class="contacts__block-card">
+							<div class="card-contact">
+								<h3 class="card-contact__title">Телефон:</h3>
+								<span class="card-contact__item">+380992511999</span>
+								<a class="card-contact__link pink" href="#">Оставить заявку</a>
+							</div>
+							<div class="card-contact">
+								<h3 class="card-contact__title">Адрес:</h3>
+								<span class="card-contact__item">Левобережная, 136</span>
+								<h3 class="card-contact__title">м.Левобережный проспект</h3>
+							</div>
+							<div class="card-contact">
+								<h3 class="card-contact__title">Часы работы:</h3>
+								<span class="card-contact__item">Пн-Пт: с 10 до 21</span>
+								<span class="card-contact__item">Сб-Вс: с 11 до 20</span>
+							</div>
+						</div>
+						<div class="map">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d40650.2858922828!2d30.522591741771254!3d50.447752465568236!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1655105356687!5m2!1sru!2sua" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<div class="contacts__text">
+							<div data-spollers class="spollers">
+								<div class="spollers__item">
+									<div class="spollers__content">Сервисный центр в Киеве осуществляет ремонт телефонов любого
+										бренда и модификации. Выполняем восстановление мобильных гаджетов с различными
+										повреждениями и программными сбоями срочно по оптимальным ценам. Мастера центра обладают
+										высокой квалификацией для того, чтобы починить неработающую технику. При этом не важно, в
+										каком она состоянии и насколько сложным окажется процесс восстановления.</div>
+
+									<button type="button" data-spoller class="spollers__title">Читать полностью</button>
+									<div class="spollers__body">
+										<p class="paragraf-spoller">
+											Осуществляя ремонт мобильных телефонов, мы стремимся предельно оперативно устранить
+											проблему, минимизировав тем самым финансовые расходы клиента и время ожидания.
+											Затрачивая
+											минимум времени, чтобы отремонтировать сотовый, пользователь сможет быстро восстановить
+											контакт с окружающими, получив в свое распоряжение полностью исправное коммуникационное
+											устройство.
+										</p>
+
+										<p class="paragraf-spoller">
+											Выполняя ремонт сотовых телефонов, наши мастера отлично осознают то, насколько важна
+											данная техника для своего владельца. Ведь современный смартфон – это не только
+											эффективный
+											инструмент для общения и бизнеса, но и уникальные программные приложения в сочетании с
+											неограниченным доступом к информации.
+										</p>
+
+										<p class="paragraf-spoller">
+											Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis itaque unde, vitae
+											odio, accusamus nostrum labore, cumque beatae exercitationem harum quaerat. Vel magnam
+											fugit rerum odit, fuga eveniet sit. Tempora.
+										</p>
+
+										<p class="paragraf-spoller">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia, facilis incidunt
+											culpa reiciendis ullam quam eveniet vero tenetur maxime officiis magni alias ea! Dolore
+											impedit pariatur consequatur dolorem voluptas porro.
+										</p>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-
-
-
-
 			</div>
 
+
 	</div>
+
+
 
 	</main>
 	<footer class="footer">
 		<div class="footer__container">
+			<div class="footer__content">
+				<div class="footer__logo">
+					<div class="logo"><a class="logo-link" href="#"><span class="logo-pink">PHONES</span> Сервис</a></div>
+					<span class="span grey">Ремонт смартфонов</span>
+				</div>
+				<div class="footer__block-text text">
+					<h2 class="text__title">Приходите к нам</h2>
+
+					<div class="text__block">
+						<span class="text__number pink">+380992511999</span>
+						<span class="span grey">Пн-Пт: с 10 до 21, Сб-Вс: с 11 до 20</span>
+					</div>
+
+					<p class="text__paragraf">Наш сервисный центр, находится прямо возле странции метро
+						Левобережная. Чтобы к нам попать, Вам необходимо начать
+						движение в сторону метро Левобережная. Мы располагаемся между
+						зданий универмага. Так же возле нашего сервисного
+						центра Вы всегда найдете парковочное место. </p>
+					<div class="text__block block-direction-column">
+
+						<span class="span grey">г.Киев</span>
+						<span class="span-text pink">Левобережная, 136</span>
+					</div>
+				</div>
+			</div>
+			<div class="footer__block-items">
+				<div class="footer__items">
+					<div class="footer__menu menu">
+						<h2 class="menu__title">Компания</h2>
+						<nav class="menu__body">
+
+							<ul class="menu__list">
+								<li class="menu__item"><a href="#main" class="menu__link">Главная</a></li>
+								<li class="menu__item"><a href="#contacts" class="menu__link">О компании</a></li>
+								<li class="menu__item"><a href="#promotions" class="menu__link">Новости</a></li>
+								<li class="menu__item"><a href="#promotions" class="menu__link">Акции</a></li>
+								<li class="menu__item"><a href="#contacts" class="menu__link">Контакты</a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="footer__menu menu">
+						<h2 class="menu__title">Ремонт брендов</h2>
+						<nav class="menu__body">
+
+							<ul class="menu__list">
+								<li class="menu__item"><a href="#" class="menu__link">Xiaomi</a></li>
+								<li class="menu__item"><a href="#" class="menu__link">Apple</a></li>
+								<li class="menu__item"><a href="#" class="menu__link">Huawei</a></li>
+								<li class="menu__item"><a href="#" class="menu__link">Honor</a></li>
+								<li class="menu__item"><a href="#" class="menu__link">Meizu</a></li>
+							</ul>
+							<ul class="menu__list">
+								<li class="menu__item"><a href="#" class="menu__link">Samsung</a></li>
+								<li class="menu__item"><a href="#" class="menu__link">Nokia</a></li>
+								<li class="menu__item"><a href="#" class="menu__link">Lenovo</a></li>
+								<li class="menu__item"><a href="#" class="menu__link">Sony</a></li>
+								<li class="menu__item"><a href="#" class="menu__link">Asus</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="footer__down">
+			<span class="span grey">©2022 remont-telephone.ua</span>
 		</div>
 	</footer>
 	</div>
@@ -768,7 +1031,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20220609191259"></script>
+	<script src="js/app.min.js?_v=20220617205352"></script>
 </body>
 
 </html>
