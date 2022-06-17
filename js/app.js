@@ -13,198 +13,6 @@
             document.documentElement.classList.add(className);
         }));
     }
-    let _slideUp = (target, duration = 500, showmore = 0) => {
-        if (!target.classList.contains("_slide")) {
-            target.classList.add("_slide");
-            target.style.transitionProperty = "height, margin, padding";
-            target.style.transitionDuration = duration + "ms";
-            target.style.height = `${target.offsetHeight}px`;
-            target.offsetHeight;
-            target.style.overflow = "hidden";
-            target.style.height = showmore ? `${showmore}px` : `0px`;
-            target.style.paddingTop = 0;
-            target.style.paddingBottom = 0;
-            target.style.marginTop = 0;
-            target.style.marginBottom = 0;
-            window.setTimeout((() => {
-                target.hidden = !showmore ? true : false;
-                !showmore ? target.style.removeProperty("height") : null;
-                target.style.removeProperty("padding-top");
-                target.style.removeProperty("padding-bottom");
-                target.style.removeProperty("margin-top");
-                target.style.removeProperty("margin-bottom");
-                !showmore ? target.style.removeProperty("overflow") : null;
-                target.style.removeProperty("transition-duration");
-                target.style.removeProperty("transition-property");
-                target.classList.remove("_slide");
-                document.dispatchEvent(new CustomEvent("slideUpDone", {
-                    detail: {
-                        target
-                    }
-                }));
-            }), duration);
-        }
-    };
-    let _slideDown = (target, duration = 500, showmore = 0) => {
-        if (!target.classList.contains("_slide")) {
-            target.classList.add("_slide");
-            target.hidden = target.hidden ? false : null;
-            showmore ? target.style.removeProperty("height") : null;
-            let height = target.offsetHeight;
-            target.style.overflow = "hidden";
-            target.style.height = showmore ? `${showmore}px` : `0px`;
-            target.style.paddingTop = 0;
-            target.style.paddingBottom = 0;
-            target.style.marginTop = 0;
-            target.style.marginBottom = 0;
-            target.offsetHeight;
-            target.style.transitionProperty = "height, margin, padding";
-            target.style.transitionDuration = duration + "ms";
-            target.style.height = height + "px";
-            target.style.removeProperty("padding-top");
-            target.style.removeProperty("padding-bottom");
-            target.style.removeProperty("margin-top");
-            target.style.removeProperty("margin-bottom");
-            window.setTimeout((() => {
-                target.style.removeProperty("height");
-                target.style.removeProperty("overflow");
-                target.style.removeProperty("transition-duration");
-                target.style.removeProperty("transition-property");
-                target.classList.remove("_slide");
-                document.dispatchEvent(new CustomEvent("slideDownDone", {
-                    detail: {
-                        target
-                    }
-                }));
-            }), duration);
-        }
-    };
-    let _slideToggle = (target, duration = 500) => {
-        if (target.hidden) return _slideDown(target, duration); else return _slideUp(target, duration);
-    };
-    function spollers() {
-        const spollersArray = document.querySelectorAll("[data-spollers]");
-        if (spollersArray.length > 0) {
-            const spollersRegular = Array.from(spollersArray).filter((function(item, index, self) {
-                return !item.dataset.spollers.split(",")[0];
-            }));
-            if (spollersRegular.length) initSpollers(spollersRegular);
-            let mdQueriesArray = dataMediaQueries(spollersArray, "spollers");
-            if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
-                mdQueriesItem.matchMedia.addEventListener("change", (function() {
-                    initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-                }));
-                initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-            }));
-            function initSpollers(spollersArray, matchMedia = false) {
-                spollersArray.forEach((spollersBlock => {
-                    spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
-                    if (matchMedia.matches || !matchMedia) {
-                        spollersBlock.classList.add("_spoller-init");
-                        initSpollerBody(spollersBlock);
-                        spollersBlock.addEventListener("click", setSpollerAction);
-                    } else {
-                        spollersBlock.classList.remove("_spoller-init");
-                        initSpollerBody(spollersBlock, false);
-                        spollersBlock.removeEventListener("click", setSpollerAction);
-                    }
-                }));
-            }
-            function initSpollerBody(spollersBlock, hideSpollerBody = true) {
-                let spollerTitles = spollersBlock.querySelectorAll("[data-spoller]");
-                if (spollerTitles.length) {
-                    spollerTitles = Array.from(spollerTitles).filter((item => item.closest("[data-spollers]") === spollersBlock));
-                    spollerTitles.forEach((spollerTitle => {
-                        if (hideSpollerBody) {
-                            spollerTitle.removeAttribute("tabindex");
-                            if (!spollerTitle.classList.contains("_spoller-active")) spollerTitle.nextElementSibling.hidden = true;
-                        } else {
-                            spollerTitle.setAttribute("tabindex", "-1");
-                            spollerTitle.nextElementSibling.hidden = false;
-                        }
-                    }));
-                }
-            }
-            function setSpollerAction(e) {
-                const el = e.target;
-                if (el.closest("[data-spoller]")) {
-                    const spollerTitle = el.closest("[data-spoller]");
-                    const spollersBlock = spollerTitle.closest("[data-spollers]");
-                    const oneSpoller = spollersBlock.hasAttribute("data-one-spoller");
-                    const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
-                    if (!spollersBlock.querySelectorAll("._slide").length) {
-                        if (oneSpoller && !spollerTitle.classList.contains("_spoller-active")) hideSpollersBody(spollersBlock);
-                        spollerTitle.classList.toggle("_spoller-active");
-                        _slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
-                    }
-                    e.preventDefault();
-                }
-            }
-            function hideSpollersBody(spollersBlock) {
-                const spollerActiveTitle = spollersBlock.querySelector("[data-spoller]._spoller-active");
-                const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
-                if (spollerActiveTitle && !spollersBlock.querySelectorAll("._slide").length) {
-                    spollerActiveTitle.classList.remove("_spoller-active");
-                    _slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
-                }
-            }
-            const spollersClose = document.querySelectorAll("[data-spoller-close]");
-            if (spollersClose.length) document.addEventListener("click", (function(e) {
-                const el = e.target;
-                if (!el.closest("[data-spollers]")) spollersClose.forEach((spollerClose => {
-                    const spollersBlock = spollerClose.closest("[data-spollers]");
-                    if (spollersBlock.classList.contains("_spoller-init")) {
-                        const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
-                        spollerClose.classList.remove("_spoller-active");
-                        _slideUp(spollerClose.nextElementSibling, spollerSpeed);
-                    }
-                }));
-            }));
-        }
-    }
-    function uniqArray(array) {
-        return array.filter((function(item, index, self) {
-            return self.indexOf(item) === index;
-        }));
-    }
-    function dataMediaQueries(array, dataSetValue) {
-        const media = Array.from(array).filter((function(item, index, self) {
-            if (item.dataset[dataSetValue]) return item.dataset[dataSetValue].split(",")[0];
-        }));
-        if (media.length) {
-            const breakpointsArray = [];
-            media.forEach((item => {
-                const params = item.dataset[dataSetValue];
-                const breakpoint = {};
-                const paramsArray = params.split(",");
-                breakpoint.value = paramsArray[0];
-                breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
-                breakpoint.item = item;
-                breakpointsArray.push(breakpoint);
-            }));
-            let mdQueries = breakpointsArray.map((function(item) {
-                return "(" + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
-            }));
-            mdQueries = uniqArray(mdQueries);
-            const mdQueriesArray = [];
-            if (mdQueries.length) {
-                mdQueries.forEach((breakpoint => {
-                    const paramsArray = breakpoint.split(",");
-                    const mediaBreakpoint = paramsArray[1];
-                    const mediaType = paramsArray[2];
-                    const matchMedia = window.matchMedia(paramsArray[0]);
-                    const itemsArray = breakpointsArray.filter((function(item) {
-                        if (item.value === mediaBreakpoint && item.type === mediaType) return true;
-                    }));
-                    mdQueriesArray.push({
-                        itemsArray,
-                        matchMedia
-                    });
-                }));
-                return mdQueriesArray;
-            }
-        }
-    }
     function formRating() {
         const ratings = document.querySelectorAll(".rating");
         if (ratings.length > 0) initRatings();
@@ -3217,7 +3025,7 @@
     }));
     core_Swiper.use([ Resize, Observer ]);
     const core = core_Swiper;
-    function createElementIfNotDefined(swiper, originalParams, params, checkProps) {
+    function create_element_if_not_defined_createElementIfNotDefined(swiper, originalParams, params, checkProps) {
         const document = ssr_window_esm_getDocument();
         if (swiper.params.createElements) Object.keys(checkProps).forEach((key => {
             if (!params[key] && true === params.auto) {
@@ -3285,7 +3093,7 @@
         }
         function init() {
             const params = swiper.params.navigation;
-            swiper.params.navigation = createElementIfNotDefined(swiper, swiper.originalParams.navigation, swiper.params.navigation, {
+            swiper.params.navigation = create_element_if_not_defined_createElementIfNotDefined(swiper, swiper.originalParams.navigation, swiper.params.navigation, {
                 nextEl: "swiper-button-next",
                 prevEl: "swiper-button-prev"
             });
@@ -3510,7 +3318,7 @@
             if ("custom" !== params.type) emit("paginationRender", swiper.pagination.$el[0]);
         }
         function init() {
-            swiper.params.pagination = createElementIfNotDefined(swiper, swiper.originalParams.pagination, swiper.params.pagination, {
+            swiper.params.pagination = create_element_if_not_defined_createElementIfNotDefined(swiper, swiper.originalParams.pagination, swiper.params.pagination, {
                 el: "swiper-pagination"
             });
             const params = swiper.params.pagination;
@@ -3605,235 +3413,6 @@
             destroy
         });
     }
-    function Scrollbar(_ref) {
-        let {swiper, extendParams, on, emit} = _ref;
-        const document = ssr_window_esm_getDocument();
-        let isTouched = false;
-        let timeout = null;
-        let dragTimeout = null;
-        let dragStartPos;
-        let dragSize;
-        let trackSize;
-        let divider;
-        extendParams({
-            scrollbar: {
-                el: null,
-                dragSize: "auto",
-                hide: false,
-                draggable: false,
-                snapOnRelease: true,
-                lockClass: "swiper-scrollbar-lock",
-                dragClass: "swiper-scrollbar-drag"
-            }
-        });
-        swiper.scrollbar = {
-            el: null,
-            dragEl: null,
-            $el: null,
-            $dragEl: null
-        };
-        function setTranslate() {
-            if (!swiper.params.scrollbar.el || !swiper.scrollbar.el) return;
-            const {scrollbar, rtlTranslate: rtl, progress} = swiper;
-            const {$dragEl, $el} = scrollbar;
-            const params = swiper.params.scrollbar;
-            let newSize = dragSize;
-            let newPos = (trackSize - dragSize) * progress;
-            if (rtl) {
-                newPos = -newPos;
-                if (newPos > 0) {
-                    newSize = dragSize - newPos;
-                    newPos = 0;
-                } else if (-newPos + dragSize > trackSize) newSize = trackSize + newPos;
-            } else if (newPos < 0) {
-                newSize = dragSize + newPos;
-                newPos = 0;
-            } else if (newPos + dragSize > trackSize) newSize = trackSize - newPos;
-            if (swiper.isHorizontal()) {
-                $dragEl.transform(`translate3d(${newPos}px, 0, 0)`);
-                $dragEl[0].style.width = `${newSize}px`;
-            } else {
-                $dragEl.transform(`translate3d(0px, ${newPos}px, 0)`);
-                $dragEl[0].style.height = `${newSize}px`;
-            }
-            if (params.hide) {
-                clearTimeout(timeout);
-                $el[0].style.opacity = 1;
-                timeout = setTimeout((() => {
-                    $el[0].style.opacity = 0;
-                    $el.transition(400);
-                }), 1e3);
-            }
-        }
-        function setTransition(duration) {
-            if (!swiper.params.scrollbar.el || !swiper.scrollbar.el) return;
-            swiper.scrollbar.$dragEl.transition(duration);
-        }
-        function updateSize() {
-            if (!swiper.params.scrollbar.el || !swiper.scrollbar.el) return;
-            const {scrollbar} = swiper;
-            const {$dragEl, $el} = scrollbar;
-            $dragEl[0].style.width = "";
-            $dragEl[0].style.height = "";
-            trackSize = swiper.isHorizontal() ? $el[0].offsetWidth : $el[0].offsetHeight;
-            divider = swiper.size / (swiper.virtualSize + swiper.params.slidesOffsetBefore - (swiper.params.centeredSlides ? swiper.snapGrid[0] : 0));
-            if ("auto" === swiper.params.scrollbar.dragSize) dragSize = trackSize * divider; else dragSize = parseInt(swiper.params.scrollbar.dragSize, 10);
-            if (swiper.isHorizontal()) $dragEl[0].style.width = `${dragSize}px`; else $dragEl[0].style.height = `${dragSize}px`;
-            if (divider >= 1) $el[0].style.display = "none"; else $el[0].style.display = "";
-            if (swiper.params.scrollbar.hide) $el[0].style.opacity = 0;
-            if (swiper.params.watchOverflow && swiper.enabled) scrollbar.$el[swiper.isLocked ? "addClass" : "removeClass"](swiper.params.scrollbar.lockClass);
-        }
-        function getPointerPosition(e) {
-            if (swiper.isHorizontal()) return "touchstart" === e.type || "touchmove" === e.type ? e.targetTouches[0].clientX : e.clientX;
-            return "touchstart" === e.type || "touchmove" === e.type ? e.targetTouches[0].clientY : e.clientY;
-        }
-        function setDragPosition(e) {
-            const {scrollbar, rtlTranslate: rtl} = swiper;
-            const {$el} = scrollbar;
-            let positionRatio;
-            positionRatio = (getPointerPosition(e) - $el.offset()[swiper.isHorizontal() ? "left" : "top"] - (null !== dragStartPos ? dragStartPos : dragSize / 2)) / (trackSize - dragSize);
-            positionRatio = Math.max(Math.min(positionRatio, 1), 0);
-            if (rtl) positionRatio = 1 - positionRatio;
-            const position = swiper.minTranslate() + (swiper.maxTranslate() - swiper.minTranslate()) * positionRatio;
-            swiper.updateProgress(position);
-            swiper.setTranslate(position);
-            swiper.updateActiveIndex();
-            swiper.updateSlidesClasses();
-        }
-        function onDragStart(e) {
-            const params = swiper.params.scrollbar;
-            const {scrollbar, $wrapperEl} = swiper;
-            const {$el, $dragEl} = scrollbar;
-            isTouched = true;
-            dragStartPos = e.target === $dragEl[0] || e.target === $dragEl ? getPointerPosition(e) - e.target.getBoundingClientRect()[swiper.isHorizontal() ? "left" : "top"] : null;
-            e.preventDefault();
-            e.stopPropagation();
-            $wrapperEl.transition(100);
-            $dragEl.transition(100);
-            setDragPosition(e);
-            clearTimeout(dragTimeout);
-            $el.transition(0);
-            if (params.hide) $el.css("opacity", 1);
-            if (swiper.params.cssMode) swiper.$wrapperEl.css("scroll-snap-type", "none");
-            emit("scrollbarDragStart", e);
-        }
-        function onDragMove(e) {
-            const {scrollbar, $wrapperEl} = swiper;
-            const {$el, $dragEl} = scrollbar;
-            if (!isTouched) return;
-            if (e.preventDefault) e.preventDefault(); else e.returnValue = false;
-            setDragPosition(e);
-            $wrapperEl.transition(0);
-            $el.transition(0);
-            $dragEl.transition(0);
-            emit("scrollbarDragMove", e);
-        }
-        function onDragEnd(e) {
-            const params = swiper.params.scrollbar;
-            const {scrollbar, $wrapperEl} = swiper;
-            const {$el} = scrollbar;
-            if (!isTouched) return;
-            isTouched = false;
-            if (swiper.params.cssMode) {
-                swiper.$wrapperEl.css("scroll-snap-type", "");
-                $wrapperEl.transition("");
-            }
-            if (params.hide) {
-                clearTimeout(dragTimeout);
-                dragTimeout = utils_nextTick((() => {
-                    $el.css("opacity", 0);
-                    $el.transition(400);
-                }), 1e3);
-            }
-            emit("scrollbarDragEnd", e);
-            if (params.snapOnRelease) swiper.slideToClosest();
-        }
-        function events(method) {
-            const {scrollbar, touchEventsTouch, touchEventsDesktop, params, support} = swiper;
-            const $el = scrollbar.$el;
-            const target = $el[0];
-            const activeListener = support.passiveListener && params.passiveListeners ? {
-                passive: false,
-                capture: false
-            } : false;
-            const passiveListener = support.passiveListener && params.passiveListeners ? {
-                passive: true,
-                capture: false
-            } : false;
-            if (!target) return;
-            const eventMethod = "on" === method ? "addEventListener" : "removeEventListener";
-            if (!support.touch) {
-                target[eventMethod](touchEventsDesktop.start, onDragStart, activeListener);
-                document[eventMethod](touchEventsDesktop.move, onDragMove, activeListener);
-                document[eventMethod](touchEventsDesktop.end, onDragEnd, passiveListener);
-            } else {
-                target[eventMethod](touchEventsTouch.start, onDragStart, activeListener);
-                target[eventMethod](touchEventsTouch.move, onDragMove, activeListener);
-                target[eventMethod](touchEventsTouch.end, onDragEnd, passiveListener);
-            }
-        }
-        function enableDraggable() {
-            if (!swiper.params.scrollbar.el) return;
-            events("on");
-        }
-        function disableDraggable() {
-            if (!swiper.params.scrollbar.el) return;
-            events("off");
-        }
-        function init() {
-            const {scrollbar, $el: $swiperEl} = swiper;
-            swiper.params.scrollbar = createElementIfNotDefined(swiper, swiper.originalParams.scrollbar, swiper.params.scrollbar, {
-                el: "swiper-scrollbar"
-            });
-            const params = swiper.params.scrollbar;
-            if (!params.el) return;
-            let $el = dom(params.el);
-            if (swiper.params.uniqueNavElements && "string" === typeof params.el && $el.length > 1 && 1 === $swiperEl.find(params.el).length) $el = $swiperEl.find(params.el);
-            let $dragEl = $el.find(`.${swiper.params.scrollbar.dragClass}`);
-            if (0 === $dragEl.length) {
-                $dragEl = dom(`<div class="${swiper.params.scrollbar.dragClass}"></div>`);
-                $el.append($dragEl);
-            }
-            Object.assign(scrollbar, {
-                $el,
-                el: $el[0],
-                $dragEl,
-                dragEl: $dragEl[0]
-            });
-            if (params.draggable) enableDraggable();
-            if ($el) $el[swiper.enabled ? "removeClass" : "addClass"](swiper.params.scrollbar.lockClass);
-        }
-        function destroy() {
-            disableDraggable();
-        }
-        on("init", (() => {
-            init();
-            updateSize();
-            setTranslate();
-        }));
-        on("update resize observerUpdate lock unlock", (() => {
-            updateSize();
-        }));
-        on("setTranslate", (() => {
-            setTranslate();
-        }));
-        on("setTransition", ((_s, duration) => {
-            setTransition(duration);
-        }));
-        on("enable disable", (() => {
-            const {$el} = swiper.scrollbar;
-            if ($el) $el[swiper.enabled ? "removeClass" : "addClass"](swiper.params.scrollbar.lockClass);
-        }));
-        on("destroy", (() => {
-            destroy();
-        }));
-        Object.assign(swiper.scrollbar, {
-            updateSize,
-            setTranslate,
-            init,
-            destroy
-        });
-    }
     function initSliders() {
         if (document.querySelector(".swiper")) {
             new core(".swiper-choose", {
@@ -3844,7 +3423,6 @@
                 spaceBetween: 50,
                 autoHeight: true,
                 speed: 800,
-                slideToClickedSlide: true,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true
@@ -3894,7 +3472,6 @@
                 spaceBetween: 50,
                 autoHeight: true,
                 speed: 800,
-                slideToClickedSlide: true,
                 effect: "fade",
                 autoplay: {
                     delay: 3e3,
@@ -3929,7 +3506,11 @@
                 spaceBetween: 50,
                 autoHeight: true,
                 speed: 800,
-                slideToClickedSlide: true,
+                effect: "fade",
+                autoplay: {
+                    delay: 3e3,
+                    disableOnInteraction: false
+                },
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true
@@ -3937,39 +3518,6 @@
                 navigation: {
                     prevEl: ".swiper-button-prev",
                     nextEl: ".swiper-button-next"
-                },
-                on: {}
-            });
-            new core(".swiper-gallery", {
-                modules: [ Navigation, Scrollbar ],
-                observer: true,
-                observeParents: true,
-                slidesPerView: 3,
-                spaceBetween: 30,
-                autoHeight: true,
-                speed: 800,
-                slideToClickedSlide: true,
-                scrollbar: {
-                    el: ".swiper-scrollbar",
-                    draggable: true
-                },
-                breakpoints: {
-                    280: {
-                        slidesPerView: 1,
-                        spaceBetween: 20
-                    },
-                    500: {
-                        slidesPerView: 2,
-                        spaceBetween: 30
-                    },
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 30
-                    },
-                    992: {
-                        slidesPerView: 3,
-                        spaceBetween: 30
-                    }
                 },
                 on: {}
             });
@@ -3990,16 +3538,10 @@
     const menuBurger = document.querySelector(".burger__icon");
     const menuBody = document.querySelector(".burger__body");
     const burger = document.querySelector(".burger");
-    const aLink = document.querySelector(".burger__list");
     if (menuBurger) menuBurger.addEventListener("click", (function(e) {
         menuBurger.classList.toggle("_active-burger-icon");
         if (menuBody) menuBody.classList.toggle("_active-burger-body");
         if (burger) burger.classList.toggle("_active-burger");
-    }));
-    if (aLink) aLink.addEventListener("click", (function(e) {
-        menuBurger.classList.remove("_active-burger-icon");
-        if (menuBody) menuBody.classList.remove("_active-burger-body");
-        if (burger) burger.classList.remove("_active-burger");
     }));
     window.onload = function() {
         const parallax = document.querySelector(".parallax");
@@ -4021,10 +3563,10 @@
                 const distY = coordYprocent - positionY;
                 positionX += distX * speed;
                 positionY += distY * speed;
-                phone.style.cssText = `transform: translate(${positionX / forPhone}%, ${positionY / forPhone}%); `;
-                clouds.style.cssText = `transform: translate(${positionX / forClouds}%, ${positionY / forClouds}%); `;
-                mountains.style.cssText = `transform: translate(${positionX / forMountains}%, ${positionY / forMountains}%); `;
-                human.style.cssText = `transform: translate(${positionX / forHuman}%, ${positionY / forHuman}%); `;
+                phone.style.cssText = `transform: translate(${positionX / forPhone}%,${positionY / forPhone}%);`;
+                clouds.style.cssText = `transform: translate(${positionX / forClouds}%,${positionY / forClouds}%);`;
+                mountains.style.cssText = `transform: translate(${positionX / forMountains}%,${positionY / forMountains}%);`;
+                human.style.cssText = `transform: translate(${positionX / forHuman}%,${positionY / forHuman}%);`;
                 requestAnimationFrame(setMouseParallaxStyle);
             }
             setMouseParallaxStyle();
@@ -4047,42 +3589,13 @@
             });
             observer.observe(document.querySelector(".content"));
             function setParallaxItemsStyle(scrollTopProcent) {
-                content.style.cssText = `transform: translate(0 %, -${scrollTopProcent / 9}%); `;
-                mountains.parentElement.style.cssText = `transform: translate(0 %, -${scrollTopProcent / 6}%); `;
-                human.parentElement.style.cssText = `transform: translate(0 %, -${scrollTopProcent / 3}%); `;
+                content.style.cssText = `transform: translate(0%,-${scrollTopProcent / 9}%);`;
+                mountains.parentElement.style.cssText = `transform: translate(0%,-${scrollTopProcent / 6}%);`;
+                human.parentElement.style.cssText = `transform: translate(0%,-${scrollTopProcent / 3}%);`;
             }
         }
     };
-    $(document).ready((function() {
-        $("a").on("click", (function(event) {
-            if ("" !== this.hash) {
-                event.preventDefault();
-                var hash = this.hash;
-                $("html, body").animate({
-                    scrollTop: $(hash).offset().top
-                }, 800, (function() {
-                    window.location.hash = hash;
-                }));
-            }
-        }));
-    }));
-    const header = document.querySelector(".header");
-    const block = document.querySelector(".main");
-    document.querySelector(".title");
-    const headerHeight = header.offsetHeight;
-    const moment = headerHeight;
-    window.addEventListener("scroll", setHeaderStyle);
-    function setHeaderStyle(e) {
-        if (block.getBoundingClientRect().top <= moment) {
-            header.style.top = `${block.offsetTop - moment}px`;
-            header.classList.add("_active-header");
-        } else {
-            header.style.top = ``;
-            header.classList.remove("_active-header");
-        }
-    }
     window["FLS"] = true;
     isWebp();
-    spollers();
     formRating();
 })();
